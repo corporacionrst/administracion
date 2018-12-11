@@ -1,0 +1,63 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{titulo}}|RST{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}Solicitar traslado desde "{{tienda}}"{%endblock%}
+{% block contenido %}
+<div class="panel-body" onchna>
+	<select class="form-control" id="tienda" onchange="seleccionar_tienda()">
+  <option value="0">Selecciona una bodega</option>
+  {%for t in tiendas%}
+  <option value="{{t.id}}">{{t.nombre}}</option>
+  {%endfor%}
+</select>
+   
+
+<div class="panel-body" >
+    Lista
+        <table class="table table-striped table-bordered table-hover" id="combinacion">
+
+            <thead>
+                <tr>
+                    <th>i</th>
+                    <th>Codigo</th>
+                    <th>Descripcion</th>
+                    <th>Marca</th>
+                    <th>cantidad</th>
+                    <th>quitar</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<div><button class="btn-success btn-lg pull-rigth" onclick="solicitar_traslado()">solicitar traslado</button>
+</div>
+<div class="panel-body" id="buscacombinacion">
+    <div class="dataTable_wrapper">
+         <input type="search" placeholder="buscar codigo" onkeyup="look_consulta()" onkeydown="endcountlook()" id="consultor_check" class="pull-right form-control col-lg-8 "> 
+     encontrados: 
+        <table class="table table-striped table-bordered table-hover" id="cantidad">
+
+            <thead>
+                <tr>
+                    <th>i</th>
+                    <th>Codigo</th>
+                    <th>Descripcion</th>
+                    <th>Marca</th>
+                    <th>seleccionar</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<input type="text" id="global" hidden>
+{% endblock %}
+{% block script%}
+<script>
+    var mitoken="{{csrf_token}}";
+</script>
+<script src="{%static 'buscar/consulta.js'%}"></script>
+<script src="{%static 'buscar/inventario/traslado.js'%}"></script>
+{%endblock%}

@@ -1,0 +1,45 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{titulo}}|RST{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}{{titulo}}{%endblock%}
+{% block contenido %}
+	<div class="dataTable_wrapper">
+    {%csrf_token%}
+   
+	<div class="col-lg-4">
+		nit:{{form.nit}}
+	</div>
+	<div class="col-lg-7">
+		nombre:{{form.nombre}}
+	</div>
+	<div class="col-lg-1">
+		credito:{{form.credito}}
+	</div>
+    <input type="text" value="{{store}}" id="tienda" hidden>
+    <div class="col-lg-12">
+        <div id="tabla_pr"></div>
+    </div>
+    <div id="table_proveedor"></div>
+	<div class="col-lg-12">
+		direccion:{{form.direccion}}
+	</div>
+    <button class="btn-success btn-lg col-lg-12 col-md-12 col-sm-12 col-xs-12" onclick="solicitar_autorizacion()">Solicitar autorizacion</button></div>
+
+	<div class="col-lg-12">lista</div>
+	{% include 'consulta/tabla.html'%}
+	{% include 'consulta/modal.html'%}
+{% endblock %}
+{% block script%}
+<script>
+    var mitoken="{{csrf_token}}";
+    var pagina={{pagina}};
+</script>
+<script src="{%static 'buscar/consulta.js'%}"></script>
+<script src="{%static 'buscar/inventario/buscar.js'%}"></script>
+<script src="{%static 'buscar/tabla/agregar.js' %}"></script>
+<script src="{%static 'buscar/nit/proveedor.js'%}"></script>
+<script src="{%static 'buscar/nit/modal.js'%}"></script>
+{% endblock%}

@@ -1,0 +1,48 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{user.username}}{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}Autorizar orden en {{tienda}}{%endblock%}
+{% block contenido %}
+
+<div>
+<table class="table table-striped table-bordered table-hover" id="carga">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Nit</th>
+            <th>Nombre</th>
+            <th>Solicita</th>
+            <th>Total</th>
+            <th>Rechazar</th>
+            <th>Aceptar</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {%for o in orden%}
+
+        <tr>
+            <td>{{o.documento.fecha}}</td>
+            <td>{{o.proveedor.persona.nit}}</td>
+            <td>{{o.proveedor.persona.nombre}}</td>
+            <td>{{o.documento.usuario}}</td>
+            <td>{{o.documento.total}}</td>
+            <td><button class="btn-danger btn" onclick="rechazar({{o.id}})"><i class="fa fa-warning fa-fw"></i></td>
+            <td><button class="btn-success btn" onclick="aceptar({{o.id}})"><i class="fa fa-check fa-fw"></i></td>
+        </tr>   
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+
+
+{% endblock %}
+{%block script%}
+<script>
+    var mitoken="{{csrf_token}}";
+</script>
+<script src="{%static 'listar/orden.js'%}"></script>
+{% endblock %}

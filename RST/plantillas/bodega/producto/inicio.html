@@ -1,0 +1,119 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{titulo}}Producto|RST{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}Productos{%endblock%}
+{% block contenido %}
+
+<div class="row">
+	{% if marca%}
+	<a href="marca">
+	    <div class="col-lg-6 col-md-6">
+	        <div class="panel panel-primary">
+	            <div class="panel-heading">
+	                <div class="row">
+	                    <div class="col-xs-3">
+	                        <i class="fa fa-copyright fa-5x"></i>
+	                    </div>
+	                    <div class="col-xs-9 text-right">
+	                        <div class="huge">MARCA</div>
+	                        <div>crear</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <a href="#">
+	                <div class="panel-footer">
+	                    <span class="pull-left">crear marca</span>
+	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	                    <div class="clearfix"></div>
+	                </div>
+	            </a>
+	        </div>
+	    </div>
+	</a>
+    {%endif%}
+    {%if productos%}
+	<a href="crear">
+	    <div class="col-lg-6 col-md-6">
+	        <div class="panel panel-green">
+	            <div class="panel-heading">
+	                <div class="row">
+	                    <div class="col-xs-3">
+	                        <i class="fa fa-cogs fa-5x"></i>
+	                    </div>
+	                    <div class="col-xs-9 text-right">
+	                        <div class="huge">PRODUCTO</div>
+	                        <div>crear</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <a href="#">
+	                <div class="panel-footer">
+	                    <span class="pull-left">Crear producto</span>
+	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	                    <div class="clearfix"></div>
+	                </div>
+	            </a>
+	        </div>
+	    </div>
+    </a>
+    {%endif%}
+    {%if combinacion%}
+	<a href="combinacion">
+	    <div class="col-lg-6 col-md-6">
+	        <div class="panel panel-yellow">
+	            <div class="panel-heading">
+	                <div class="row">
+	                    <div class="col-xs-3">
+	                        <i class="fa fa-shopping-cart fa-5x"></i>
+	                    </div>
+	                    <div class="col-xs-9 text-right">
+	                        <div class="huge">Combinación</div>
+	                        <div>de productos</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <a href="#">
+	                <div class="panel-footer">
+	                    <span class="pull-left">combinar productos</span>
+	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	                    <div class="clearfix"></div>
+	                </div>
+	            </a>
+	        </div>
+	    </div>
+	</a>
+    {%endif%}
+    {%if inv%}
+	<a href="/inventario">
+	    <div class="col-lg-6 col-md-6">
+	        <div class="panel panel-red">
+	            <div class="panel-heading">
+	                <div class="row">
+	                    <div class="col-xs-3">
+	                        <i class="fa fa-support fa-5x"></i>
+	                    </div>
+	                    <div class="col-xs-9 text-right">
+	                        <div class="huge">13</div>
+	                        <div>Support Tickets!</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <a href="#">
+	                <div class="panel-footer">
+	                    <span class="pull-left">View Details</span>
+	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	                    <div class="clearfix"></div>
+	                </div>
+	            </a>
+	        </div>
+	    </div>
+	</a>
+    {%endif%}
+</div>
+
+
+
+{% endblock %}

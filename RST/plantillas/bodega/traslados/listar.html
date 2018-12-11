@@ -1,0 +1,63 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{titulo}}|RST{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}listar traslados en "{{tienda}}"{%endblock%}
+{% block contenido %}
+<div class="container">
+	<div class="col-md-4 no-float">
+		Seleccione tienda
+		<select name="tienda" class="form-control" required="" id="id_marca">
+			<option value="" selected="">tiendas</option>
+			{%for t in tiendas%}
+				<option value="{{t.id}}">{{t.nombre}}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="col-md-2 no-float">
+		desde<input type="date" class="form-control">
+	</div>
+	<div class="col-md-2 no-float">
+		hasta<input type="date" class="form-control">
+	</div>
+	<div class="col-md-4">
+		<button class="btn btn-primary">buscar</button>
+	</div>
+
+</div>
+
+
+<div class="panel-body" >
+	    <table class="table table-striped table-bordered table-hover" id="combinacion">
+
+            <thead>
+                <tr>
+                    <th>fecha</th>
+                    <th>tienda</th>
+                    <th>solicita</th>
+                    <th>imprimir</th>
+                </tr>
+            </thead>
+            <tbody>
+	            {%for t in traslados%}
+					<tr>
+						<td>{{t.fecha}}</td>
+						<td>{{t.tienda_solicita.nombre}}</td>
+						<td>{{t.solicita}}</td>
+						<td><button class="btn-primary btn" onclick="imprimir({{t.id}})"><i class="fa fa-print fa-fw"></i></button></td>
+					</tr>
+	        	{%endfor%}
+        	</tbody>
+    
+        </table>
+    </div>
+</div>
+{% endblock %}
+{%block script%}
+<script >
+    var mitoken="{{csrf_token}}"
+</script>
+<script src="{%static 'buscar/traslados/traslados.js'%}"></script>
+{%endblock%}

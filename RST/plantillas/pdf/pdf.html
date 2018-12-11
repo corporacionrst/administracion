@@ -1,0 +1,92 @@
+<html>
+<head>
+	<title>{{tipo}} {{numero}}</title>
+
+<style>
+.lista td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 3px;
+    font-size: small;
+}
+th.from, th.detalle {
+  width: 75%
+}
+
+</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<td colspan=3 rowspan=4 style="border: 1px solid black; padding:20px"></td>
+			<td colspan=3><h1 style="text-align:center;">{{documento.tienda_recibe.nombre}}</h1></td>
+			<td colspan=4><div style="text-align:center;">fecha impresion</div></td>
+			
+		</tr>
+		<tr>
+			<td colspan=3><h1 style="text-align:center;">{{documento.tienda_recibe.ubicacion}}</h1></td>
+			<td colspan=4><h1 style="text-align:center;">{{tipo}}</h1></td>
+			
+		</tr>
+		<tr>
+			<td colspan=3><h1 style="text-align:center;">{{documento.tienda_recibe.telefono}}</h1></td>
+			<td colspan=4><div style="text-align:center;">no:{{numero}}
+			</div></td>
+		</tr>
+		<tr>
+			<td colspan=3><h1 style="text-align:center;  border-spacing: 5px;">{{documento.tienda_recibe.nit}}</h1></td>
+			<td colspan=4 style="border: 1px solid black;"><div style="text-align:center;"><b> Fecha: </b>{{documento.fecha}}</div></td>
+		</tr>
+		<tr>
+			<td colspan=10></td>
+		</tr>
+		<tr>
+			<td><b>tienda</b></td>
+			<td colspan=9>{{documento.tienda_solicita.nombre}}</td>
+		</tr>
+		<tr>
+			<td><b>direccion</b></td>
+			<td colspan=9>{{documento.tienda_solicita.ubicacion}}</td>
+		</tr>
+		<tr>
+			<td><b>solicita</b></td>
+			<td colspan=9>{{documento.solicita}}</td>
+		</tr>
+	</table>
+	<table class="lista" id="listado">
+		<tr>
+			<th>codigo</th>
+			<th class="detalle">descripcion</th>
+			<th>marca</th>
+			<th>cantidad</th>
+			<th>unitario</th>
+		</tr>
+		{%for informacion in lista%}
+		<tr>
+			<td>{{informacion.producto.producto.codigo}}</td>
+			<td>{{informacion.producto.producto.descripcion}}</td>
+			<td>{{informacion.producto.producto.marca}}</td>
+			<td>{{informacion.cantidad}}</td>
+			<td>{{informacion.precio}}</td>
+		</tr>
+		{%endfor%}
+		{% for r in size%}
+		<tr>
+			<td colspan=5>.</td>
+		</tr>
+		{%endfor%}
+		<tr>
+			<td colspan=5 style=" padding:40px"></td>
+		</tr>
+		<tr>
+			<td colspan=3>______________________</td>
+			<td colspan=2>______________________</td>
+		</tr>
+		<tr>
+			<td colspan=3>despacha: {{documento.despacha}}</td>
+			<td colspan=2>recibe</td>
+		</tr>
+	</table>
+	{{informacion}}
+</body>
+</html>

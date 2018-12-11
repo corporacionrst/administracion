@@ -1,0 +1,56 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{titulo}}|RST{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}Inventario{%endblock%}
+{% block contenido %}
+<div class="panel-body">
+    <div class="dataTable_wrapper">
+         <input type="search" placeholder="buscar codigo" onkeyup="look_consulta()" onkeydown="endcountlook()" id="consultor_check" class="pull-right form-control col-lg-8 "> 
+     encontrados: 
+        <table class="table table-striped table-bordered table-hover" id="productos_a_listar">
+
+            <thead>
+                <tr>
+                    <th>i</th>
+                    <th>Codigo</th>
+                    <th>Descripcion</th>
+                    <th>Marca</th>
+                    <th>cantidad</th>
+                    {%if ver_costos%}
+                    <th>costo</th>
+                    {%endif%}
+                    {%if ver_distribuidor%}
+                    <th>distribuidor</th>
+                    {%endif%}
+                    {%if ver_mayorista%}
+                    <th>mayorista</th>
+                    {%endif%}
+                    {%if ver_efectivo%}
+                    <th>efectivo</th>
+                    {%endif%}
+                    {%if ver_tarjeta%}
+                    <th>tarjeta</th>
+                    {%endif%}
+                    <th>ver</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block script%}
+<script>
+    var ver_costos       ={{ver_costos|yesno:"true,false" }};     
+    var ver_distribuidor ={{ver_distribuidor|yesno:"true,false" }};
+    var ver_mayorista    ={{ver_mayorista|yesno:"true,false" }}; 
+    var ver_efectivo     ={{ver_efectivo|yesno:"true,false" }};
+    var ver_tarjeta      ={{ver_tarjeta|yesno:"true,false" }};
+</script>
+<script src="{%static 'buscar/consulta.js'%}"></script>
+<script src="{%static 'buscar/inventario/bodega.js'%}"></script>
+<script src="{%static 'buscar/inventario/tabla.js'%}"></script>
+
+{%endblock%}

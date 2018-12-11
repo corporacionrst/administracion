@@ -1,0 +1,13 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{titulo}}|RST{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}{{titulo}}{%endblock%}
+{% block contenido %}
+<form method="POST" action="{{ruta}}">{%csrf_token%}
+	{{form.as_p}}
+    <input type="submit" value="{{accion}}" class="btn-primary col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-right btn-lg" >
+</form>
+{% endblock %}

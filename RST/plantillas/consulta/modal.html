@@ -1,0 +1,30 @@
+<form method='POST' action='{{agregar}}' enctype="multipart/form-data">
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>{{ingreso}}</h2>
+    </div>
+    <div class="modal-body">{%csrf_token%}
+      <p class="col-lg-4">nit{{formulario.nit_a_registrar}}</p>
+      <p class="col-lg-8">nombre{{formulario.nombre_a_registrar}}</p>
+     <p class="col-lg-1">ciudad</br>
+      <input type="checkbox" name="ciudad" id="ciudad" onclick="city()"></p>
+      <p class="col-lg-11">direccion:{{formulario.direccion_a_registrar}}</p>
+      <p  class="col-lg-6">telefono{{formulario.telefono_a_registrar}}</p>
+      <p class="col-lg-6">
+        correo{{formulario.correo_a_registrar}}
+      </p>
+	<div id="myDIV"> 
+      </br>{{ingreso}}<div class="id_es_set"></div>
+	</div>
+
+    </div>
+    <div class="modal-footer">
+      <h3><button class="btn-success btn-lg" onclick="guardar()">{{ingreso}}</button>
+    </div>
+  </div>
+</form>
+</div>

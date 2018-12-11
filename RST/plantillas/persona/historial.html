@@ -1,0 +1,16 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{titulo}}|RST{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}{{titulo}} {{tienda}}{%endblock%}
+{% block contenido %}
+<form method="GET">
+<b>desde</b>
+<input type="date" id="desde" class="form-control" placeholder ="desde">
+<b>hasta</b>
+<input type="date" id="hasta" class="form-control" placeholder ="desde">
+<input type="submti">
+</form>
+{%endblock%}

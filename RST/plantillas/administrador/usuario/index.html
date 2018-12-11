@@ -1,0 +1,46 @@
+{%extends 'sesion/base.html'%}
+{%block titulo%}{{user.username}}{%endblock%}
+{% load staticfiles %}
+{%block wrapper%}
+    {{navbar|safe}}
+{%endblock%}
+{%block encabezado%}Usuarios en {{tienda}}{%endblock%}
+{%block boton%}
+<a href="agregar">Crear usuario</a>
+{%endblock%}
+{% block contenido %}
+
+<div>
+<table class="table table-striped table-bordered table-hover" id="carga">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Cumpleaños</th>
+            <th>Correo</th>
+            <th>Modificar</th>
+            <th>Quitar</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {%for u in usuarios%}
+
+        <tr>
+            <td>{{u.usuario}}</td>
+            <td>{{u.nombre}}</td>
+            <td>{{u.apellido}}</td>
+            <td>{{u.birthday}}</td>
+            <td>{{u.email}}</td>
+            <td>%</td>
+            <td>X</td>
+        </tr>   
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block titulo %}{%endblock%}</title>
+    
+    <link rel="stylesheet" href="{%static 'css/personal.css'%}">
+    <!-- Social Buttons CSS -->
+    <link href="{%static 'bower_components/bootstrap-social/bootstrap-social.css'%}" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="{%static 'bower_components/bootstrap/dist/css/bootstrap.min.css'%}" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="{%static 'bower_components/metisMenu/dist/metisMenu.min.css'%}" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="{%static 'dist/css/timeline.css'%}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{%static 'dist/css/sb-admin-2.css'%}" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="{%static 'bower_components/morrisjs/morris.css'%}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{%static 'bower_components/font-awesome/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+    <div id="wrapper">
+        {% include 'sesion/nav.html' %} 
+    <div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-12">
+            <h1 class="page-header">{%block encabezado%}{%endblock%}</h1>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {% for message in messages %}
+                        <li{%if not message.tags%} class="{{message.tags}}"{%endif%}>{{message|safe}}</li>
+                    {% endfor %}
+-
+                <div class="pull-right">{%block boton%}{%endblock%}</div>
+                </div>
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <div class="row">
+                            <div class="panel-body">
+                                <div class="dataTable_wrapper">
+                                {% block contenido %}{% endblock %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   <script src="{%static 'bower_components/jquery/dist/jquery.min.js'%}"></script>
+   <script src="{%static 'bower_components/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+   <script src="{%static 'bower_components/metisMenu/dist/metisMenu.min.js'%}"></script>
+   <script src="{%static 'bower_components/datatables/media/js/jquery.dataTables.min.js'%}"></script>
+   <script src="{%static 'bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'%}"></script>
+   <script src="{%static 'dist/js/sb-admin-2.js'%}"></script>
+{% block script %}{% endblock %}
+
+</body>
+</html>
